@@ -86,6 +86,22 @@ gas_mask = component == "ICM"
 M_500c_gGrandis = M500_Grandis[gas_mask]
 f_gas_Grandis = fractions[gas_mask]
 err_f_gas_Grandis = err_frac[gas_mask]
+
+############# Mantz et al. 2022 (https://arxiv.org/pdf/2111.09343)
+data = np.genfromtxt(data_dir + "Mantz_2022.dat", dtype=None,
+    names=True, encoding="utf-8", skip_header=16)
+h_Mantz = 0.7
+Om_Mantz = 0.3
+z         = data["z"]
+Mgas      = data["Mgas"]     * 1e13 * h_Mantz  # [Msun/h]
+Mgas_err  = data["Mgas_err"] * 1e13 * h_Mantz 
+Mtot      = data["Mtot"]     * 1e14  * h_Mantz  # [Msun/h]
+Mtot_err  = data["Mtot_err"] * 1e14  * h_Mantz 
+M2500     = data["M2500"]    * 1e14  * h_Mantz  # [Msun/h]
+M2500_err = data["M2500_err"]* 1e14 * h_Mantz 
+f_gas     = data["fgas"]
+f_gas_err = data["fgas_err"]
+
 ###############Chiu et al. 2018 (https://academic.oup.com/mnras/article/478/3/3072/4996803)
 h0_chiu = 0.68
 data = np.genfromtxt(data_dir+"Chiu_2018.dat", dtype=None, names=True,encoding='utf-8', skip_header=17)#
