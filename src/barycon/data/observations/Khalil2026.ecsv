@@ -1,0 +1,66 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_gas_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: sigma_v, datatype: int64}
+# - {name: N_gal, datatype: int64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: needs_check}
+# - contributors: [M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: ['preprint: check against the published version', f_gas errors propagated assuming independent M and M_gas errors, 1 groups
+#       without a gas-mass measurement at r500c dropped]
+# - changelog: []
+# - {id: Khalil2026}
+# - {reference: 'Khalil, H., Finoguenov, A., Eckert, D., et al. 2026, arXiv:2608.17735'}
+# - {bibcode: null}
+# - {doi: 10.48550/arXiv.2608.17735}
+# - {arxiv: '2608.17735'}
+# - {url: 'https://arxiv.org/abs/2608.17735'}
+# - {description: 25 nearby galaxy groups from the 2MRS optical catalogue with eROSITA (eRASS1) surface brightness profiles; hot gas mass
+#     and gas fraction out to R200.}
+# - {data_type: points}
+# - quantities: [f_gas]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: dynamical, proxy_details: 'VERIFY: catalogue lists sigma_v
+#       and N_gal; mass method not stated in the abstract', unit: Msun}
+# - cosmology: {H0: 70.0, Ode0: 0.7, Om0: 0.3, note: VERIFY (h=0.7 assumed in the Douspis loader)}
+# - redshift: {effective: null, max: 0.0248, min: 0.01092}
+# - {selection: optically selected (2MRS) groups detected by eROSITA; complete sample}
+# - {table_source: 'catalogue table (transcribed by M. Douspis, Oct 2026)'}
+# schema: astropy-2.0
+name z M_500c M_500c_lo M_500c_hi M_gas_500c sigma_v N_gal f_gas f_gas_lo f_gas_hi
+2938 0.0241 0.508 0.175 0.175 0.0305 430 14 0.060039 0.023625 0.023625
+2657 0.017 0.358 0.129 0.129 0.0192 373 12 0.053631 0.021785 0.021785
+7727 0.0248 0.614 0.136 0.136 0.0317 445 20 0.051629 0.013495 0.013495
+4050 0.023 0.354 0.153 0.153 0.0188 319 10 0.053107 0.026804 0.026804
+4808 0.0239 0.303 0.088 0.088 0.0219 347 11 0.072277 0.024452 0.024452
+1683 0.0153 0.383 0.138 0.138 0.0175 405 12 0.045692 0.018704 0.018704
+3089 0.022 0.168 0.062 0.062 0.008 287 9 0.047619 0.019712 0.019712
+1075 0.0227 0.151 0.076 0.076 0.0167 292 7 0.110596 0.061646 0.061646
+5199 0.0233 0.71 0.223 0.223 0.0399 502 16 0.056197 0.020218 0.020218
+343 0.0222 0.244 0.107 0.107 0.0177 364 5 0.072541 0.03829 0.03829
+6448 0.0144 0.456 0.232 0.232 0.0081 390 7 0.017763 0.010143 0.010143
+391 0.0188 0.181 0.103 0.103 0.0081 284 9 0.044751 0.02776 0.02776
+4021 0.0211 0.929 0.331 0.331 0.0575 574 16 0.061895 0.024263 0.024263
+5318 0.0229 0.135 0.063 0.063 0.0062 233 10 0.045926 0.025241 0.025241
+4957 0.02401 0.254 0.113 0.113 0.0079 361 5 0.031102 0.015729 0.015729
+4766 0.01377 0.16 0.05 0.05 0.0032 220 11 0.02 0.008004 0.008004
+4757 0.02231 0.24 0.139 0.139 0.0125 329 5 0.052083 0.035964 0.035964
+4701 0.02192 0.232 0.129 0.129 0.006 388 5 0.025862 0.016766 0.016766
+4417 0.01466 0.149 0.057 0.057 0.0058 236 11 0.038926 0.01693 0.01693
+3807 0.01922 0.193 0.096 0.096 0.0068 261 6 0.035233 0.019614 0.019614
+3224 0.02263 0.302 0.126 0.126 0.0088 404 11 0.029139 0.013689 0.013689
+3148 0.02069 0.134 0.068 0.068 0.0053 329 7 0.039552 0.022628 0.022628
+1925 0.01612 0.083 0.041 0.041 0.0036 252 5 0.043373 0.024013 0.024013
+4271 0.01092 0.282 0.1 0.1 0.0087 310 9 0.030851 0.013437 0.013437

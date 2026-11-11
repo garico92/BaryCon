@@ -1,0 +1,43 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# meta: !!omap
+# - {id: Author2026}
+# - {reference: 'Author, A., Coauthor, B., et al. 2026, Journal, Vol, Page'}
+# - {bibcode: null}
+# - {doi: null}
+# - {arxiv: '2601.00000'}
+# - {url: 'https://arxiv.org/abs/2601.00000'}
+# - {description: 'One paragraph: sample, selection, how M and the baryon masses were measured.'}
+# - {kind: observation}
+# - {data_type: points}
+# - quantities: [f_gas]
+# - derived_quantities: []
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: hydrostatic, proxy_details: instrument / method / calibration,
+#     unit: Msun}
+# - cosmology: {H0: 70.0, Ode0: 0.7, Om0: 0.3}
+# - stellar: {imf: null, includes_bcg: null, includes_icl: null}
+# - redshift: {effective: null, max: 0.3, min: 0.05}
+# - {selection: 'e.g. X-ray flux limited, relaxed clusters'}
+# - {extracted: false}
+# - {table_source: Table 2 (journal version)}
+# - caveats: []
+# - {status: unverified}
+# - {verified_by: null}
+# - contributors: [Your Name]
+# - {added: '2026-11-01'}
+# - changelog: []
+# - overlaps_with: []
+# schema: astropy-2.0
+name z M_500c M_500c_lo M_500c_hi f_gas f_gas_lo f_gas_hi
+ClusterA 0.1 3.1 0.3 0.3 0.11 0.01 0.01
+ClusterB 0.2 5.2 0.4 0.5 0.12 0.01 0.012

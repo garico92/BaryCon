@@ -1,0 +1,57 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: R_500c_kpc, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_gas_500c_tentative, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_star_bcg, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_star_sat, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_star, datatype: float64}
+# - {name: f_star_lo, datatype: float64}
+# - {name: f_star_hi, datatype: float64}
+# - {name: f_bcg, datatype: float64}
+# - {name: f_bcg_lo, datatype: float64}
+# - {name: f_bcg_hi, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: needs_check}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: ['LEGACY BUG FIXED: M500 is the 2nd numeric column (11.96 for A2142), consistent with R500 and z to <7% (Douspis'' file header
+#       reaches the same conclusion). The 4th column (15.60) was used as M500 by both legacy codes; it is most likely M_gas,500 in 1e13
+#       Msun (f_gas ~0.08-0.13). Legacy f_star biased by -18%..+30% depending on mass.', M_gas_500c_tentative kept until checked against
+#       the journal table]
+# - changelog: ['column mapping and cosmology/IMF checked against arXiv:1401.7329 2026-10-31', mass proxy = Y_X (paper text) 2026-11-06]
+# - {id: Kravtsov2018}
+# - {reference: 'Kravtsov, A. V., Vikhlinin, A. A., Meshcheryakov, A. V. 2018, Astronomy Letters, 44, 8'}
+# - {bibcode: 2018AstL...44....8K}
+# - {doi: 10.1134/S1063773717120015}
+# - {arxiv: '1401.7329'}
+# - {url: 'https://arxiv.org/abs/1401.7329'}
+# - {description: 9 nearby clusters with deep photometry of BCG outskirts and Chandra total masses; stellar mass in BCG (extended profile)
+#     and satellites within R500.}
+# - {data_type: points}
+# - quantities: [f_star, f_bcg]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: xray_scaling_relation, proxy_details: 'Chandra Y_X proxy (Vikhlinin+09);
+#       A1991, MKW4, RXJ1159 from the same Chandra analysis', unit: Msun}
+# - cosmology: {H0: 70.0, Ode0: 0.73, Om0: 0.27}
+# - stellar: {imf: chabrier, includes_bcg: true, includes_icl: true}
+# - redshift: {effective: null, max: 0.0894, min: 0.02}
+# - {table_source: 'Table 1; redshifts from NED/literature (Douspis, Oct 2026)'}
+# schema: astropy-2.0
+name z R_500c_kpc M_500c M_500c_lo M_500c_hi M_gas_500c_tentative M_star_bcg M_star_sat f_star f_star_lo f_star_hi f_bcg f_bcg_lo f_bcg_hi
+A2142 0.0894 1539.0 11.96 0.2 0.2 1.56 0.0312 0.1222 0.012826 0.001372 0.001372 0.002609 0.000304 0.000304
+A2029 0.0767 1387.0 8.64 0.14 0.14 1.03 0.0414 0.0821 0.014294 0.001285 0.001285 0.004792 0.000356 0.000356
+A85 0.0555 1235.0 5.98 0.07 0.07 0.7 0.0306 0.0528 0.013946 0.001345 0.001345 0.005117 0.000505 0.000505
+A1795 0.0622 1196.0 5.46 0.06 0.06 0.534 0.0147 0.0401 0.010037 0.001398 0.001398 0.002692 0.00024 0.00024
+MKW3s 0.045 873.0 2.09 0.03 0.03 0.235 0.0079 0.0189 0.012823 0.002364 0.002364 0.00378 0.000245 0.000245
+A2052 0.0348 840.0 1.84 0.03 0.03 0.186 0.0126 0.0222 0.018913 0.002641 0.002641 0.006848 0.000608 0.000608
+A1991 0.0587 748.0 1.33 0.037 0.037 0.134 0.0109 0.0177 0.021504 0.003172 0.003172 0.008195 0.000505 0.000505
+MKW4 0.02 568.0 0.56 0.013 0.013 0.046 0.0091 0.0097 0.033571 0.005312 0.005312 0.01625 0.000969 0.000969
+RXJ1159+5531 0.081 568.0 0.59 0.028 0.028 0.047 0.0138 0.0047 0.031356 0.004142 0.004142 0.02339 0.00262 0.00262

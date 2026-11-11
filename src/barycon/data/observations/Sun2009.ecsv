@@ -1,0 +1,58 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: unverified}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: [legacy id 'Sun 2008' (arXiv year); published 2009]
+# - changelog: []
+# - {id: Sun2009}
+# - {reference: 'Sun, M., Voit, G. M., Donahue, M., et al. 2009, ApJ, 693, 1142'}
+# - {bibcode: 2009ApJ...693.1142S}
+# - {doi: 10.1088/0004-637X/693/2/1142}
+# - {arxiv: '0805.2320'}
+# - {url: 'https://arxiv.org/abs/0805.2320'}
+# - {description: 43 nearby galaxy groups with Chandra; hydrostatic masses (subsample with r500 coverage).}
+# - {data_type: points}
+# - quantities: [f_gas]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: hydrostatic, proxy_details: Chandra HSE, unit: Msun}
+# - cosmology: {H0: 73.0, Ode0: 0.76, Om0: 0.24}
+# - redshift: {effective: null, max: 0.122, min: 0.0124}
+# - {table_source: Table 3; names and redshifts restored by Douspis (Oct 2026)}
+# schema: astropy-2.0
+name z M_500c M_500c_hi M_500c_lo f_gas f_gas_hi f_gas_lo
+NGC1550 0.0124 0.318 0.032 0.037 0.097 0.012 0.009
+NGC3402 0.0153 0.485 0.071 0.068 0.086 0.009 0.009
+3C442A 0.0263 0.39 0.022 0.04 0.068 0.006 0.003
+UGC5088 0.0274 0.148 0.036 0.024 0.049 0.008 0.01
+NGC4104 0.0282 0.485 0.055 0.053 0.069 0.009 0.006
+A1177 0.0316 0.528 0.084 0.073 0.06 0.009 0.007
+NGC6269 0.0348 0.849 0.197 0.201 0.076 0.011 0.01
+ESO306-017 0.0358 1.03 0.21 0.13 0.081 0.01 0.011
+NGC5098 0.0368 0.2 0.028 0.046 0.108 0.021 0.012
+A160 0.0447 0.79 0.106 0.11 0.085 0.009 0.008
+UGC842 0.0452 0.56 0.26 0.11 0.056 0.012 0.014
+A2717 0.0498 1.29 0.27 0.17 0.076 0.01 0.01
+RXJ1022+3830 0.0543 0.8 0.131 0.14 0.075 0.007 0.013
+AS1101 0.0564 1.41 0.5 0.34 0.114 0.021 0.02
+ESO351-021 0.0571 0.322 0.18 0.09 0.074 0.013 0.018
+A3880 0.0581 1.49 0.5 0.35 0.088 0.016 0.021
+A1991 0.0587 1.34 0.25 0.19 0.094 0.01 0.012
+A1275 0.0637 0.69 0.3 0.167 0.094 0.018 0.031
+A2092 0.0669 0.895 0.181 0.162 0.078 0.013 0.013
+A2462 0.0733 0.88 0.129 0.119 0.099 0.011 0.009
+RXJ1159+5531 0.0808 0.83 0.31 0.112 0.065 0.007 0.012
+A1692 0.0848 0.97 0.299 0.191 0.09 0.014 0.02
+A2550 0.122 0.79 0.29 0.1 0.093 0.011 0.016

@@ -1,0 +1,48 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: R_500c_kpc, datatype: float64}
+# - {name: T_spec, datatype: float64}
+# - {name: c500, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: unverified}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: []
+# - changelog: ['LEGACY BUG FIXED: both legacy codes used h=0.72 while the paper and the data file state h=0.71 (1.4% in M, 2.1% in f_gas)']
+# - {id: Vikhlinin2006}
+# - {reference: 'Vikhlinin, A., Kravtsov, A., Forman, W., et al. 2006, ApJ, 640, 691'}
+# - {bibcode: 2006ApJ...640..691V}
+# - {doi: 10.1086/500288}
+# - {arxiv: astro-ph/0507092}
+# - {url: 'https://iopscience.iop.org/article/10.1086/500288'}
+# - {description: 13 relaxed low-z clusters with Chandra temperature profiles to ~r500; hydrostatic masses (10 with r500 measurements).}
+# - {data_type: points}
+# - quantities: [f_gas]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: hydrostatic, proxy_details: Chandra HSE, unit: Msun}
+# - cosmology: {H0: 71.0, Ode0: 0.7, Om0: 0.3}
+# - redshift: {effective: null, max: 0.2302, min: 0.0199}
+# - {table_source: Table 2 of the journal version (differs from arXiv v1); names and z added by Douspis}
+# schema: astropy-2.0
+name z R_500c_kpc T_spec c500 M_500c M_500c_lo M_500c_hi f_gas f_gas_lo f_gas_hi
+A133 0.0569 1007.0 4.14 3.18 3.17 0.38 0.38 0.083 0.006 0.006
+A383 0.1883 944.0 4.81 4.32 3.06 0.31 0.31 0.124 0.007 0.007
+A478 0.0881 1337.0 7.94 3.57 7.68 1.01 1.01 0.12 0.011 0.011
+A907 0.1603 1096.0 5.96 3.48 4.56 0.37 0.37 0.124 0.006 0.006
+A1413 0.1429 1299.0 7.38 2.93 7.57 0.76 0.76 0.107 0.007 0.007
+A1795 0.0622 1235.0 6.12 3.21 6.03 0.52 0.52 0.104 0.006 0.006
+A1991 0.0592 732.0 2.61 4.32 1.23 0.17 0.17 0.102 0.008 0.008
+A2029 0.0779 1362.0 8.47 4.04 8.01 0.74 0.74 0.123 0.007 0.007
+A2390 0.2302 1416.0 8.89 1.66 10.74 1.08 1.08 0.141 0.009 0.009
+MKW4 0.0199 634.0 1.64 2.54 0.77 0.1 0.1 0.062 0.006 0.006

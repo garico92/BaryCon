@@ -1,0 +1,65 @@
+# f = norm * (M / pivot_mass)**slope ; masses in physical Msun for the cosmology below.
+# Errors are positive 1-sigma deltas. 'corr' = correlation between ln(norm) and slope.
+meta:
+  id: Author2026_relation
+  reference: Author, A., Coauthor, B., et al. 2026, Journal, Vol, Page
+  bibcode: null
+  doi: null
+  arxiv: '2601.00000'
+  url: https://arxiv.org/abs/2601.00000
+  description: 'One paragraph: sample, selection, how M and the baryon masses were
+    measured.'
+  kind: observation
+  data_type: relation
+  quantities:
+  - f_gas
+  derived_quantities: []
+  aperture:
+    delta: 500c
+    region: sphere
+    r_inner: null
+    r_outer: 1.0
+  mass:
+    column: M_500c
+    definition: 500c
+    proxy: weak_lensing
+    proxy_details: instrument / method / calibration
+    unit: Msun
+    distance_exponent: 1.0
+  cosmology:
+    H0: 70.0
+    Om0: 0.3
+    Ode0: 0.7
+  stellar:
+    imf: null
+    includes_bcg: null
+    includes_icl: null
+  redshift:
+    min: 0.05
+    max: 0.3
+    effective: null
+  selection: e.g. X-ray flux limited, relaxed clusters
+  extracted: false
+  table_source: Table 2 (journal version)
+  caveats: []
+  status: unverified
+  verified_by: null
+  contributors:
+  - Your Name
+  added: '2026-11-01'
+  changelog: []
+  overlaps_with: []
+components:
+- quantity: f_gas
+  label: gas
+  norm: 0.09
+  norm_err_lo: 0.01
+  norm_err_hi: 0.01
+  slope: 0.25
+  slope_err_lo: 0.05
+  slope_err_hi: 0.05
+  pivot_mass: 300000000000000.0
+  mass_range:
+  - 50000000000000.0
+  - 1000000000000000.0
+  corr: 0.0

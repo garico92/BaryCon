@@ -1,0 +1,63 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: M_2500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_2500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_2500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_gas_2500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: needs_check}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: ['legacy file had no column header: meaning inferred (Mgas[1e13]/Mtot[1e14] reproduces f_gas to <6%); radius column units
+#       (arcsec?) unverified', not plotted by the legacy scripts]
+# - changelog: []
+# - {id: Landry2013_2500c}
+# - {reference: 'Landry, D., Bonamente, M., Giles, P., et al. 2013, MNRAS, 433, 2790'}
+# - {bibcode: 2013MNRAS.433.2790L}
+# - {doi: null}
+# - {arxiv: '1211.4626'}
+# - {url: 'https://arxiv.org/abs/1211.4626'}
+# - {description: Complete sample of X-ray luminous clusters at 0.15<z<0.3 observed with Chandra; hydrostatic masses using the Vikhlinin+06
+#     temperature model ('Vikh' rows; the polytropic 'Poly' rows are not migrated).}
+# - {data_type: points}
+# - quantities: [f_gas]
+# - aperture: {delta: 2500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_2500c, definition: 2500c, distance_exponent: 1.0, proxy: hydrostatic, proxy_details: 'Chandra, Vikhlinin+06 model',
+#     unit: Msun}
+# - cosmology: {H0: 70.0, Ode0: 0.7, Om0: 0.3, note: VERIFY}
+# - redshift: {effective: 0.22, max: 0.3, min: 0.15}
+# - {table_source: Table 11}
+# schema: astropy-2.0
+name M_2500c M_2500c_hi M_2500c_lo M_gas_2500c f_gas f_gas_hi f_gas_lo
+A115 1.45 0.49 0.37 0.157 0.108 0.015 0.013
+A1423 1.48 0.26 0.25 0.159 0.108 0.009 0.007
+A1576 2.15 0.52 0.5 0.223 0.104 0.014 0.01
+A1682 1.75 0.45 0.42 0.166 0.095 0.01 0.008
+A1758 3.17 1.72 1.37 0.312 0.098 0.022 0.015
+A1763 2.24 0.46 0.4 0.265 0.119 0.011 0.009
+A1835 4.74 0.6 0.61 0.46 0.097 0.008 0.007
+A1914 4.22 0.45 0.42 0.471 0.112 0.007 0.007
+A2111 1.91 0.51 0.36 0.196 0.103 0.009 0.01
+A2204 4.45 0.34 0.32 0.475 0.107 0.005 0.004
+A2219 4.07 0.48 0.46 0.57 0.14 0.007 0.007
+A2261 3.04 0.48 0.38 0.363 0.119 0.009 0.009
+A2390 6.11 1.25 1.07 0.571 0.093 0.009 0.008
+A2552 2.67 0.6 0.6 0.305 0.114 0.014 0.011
+A2631 2.3 0.47 0.47 0.287 0.125 0.012 0.009
+A267 1.37 0.36 0.34 0.161 0.117 0.02 0.014
+A520 2.82 0.31 0.35 0.316 0.112 0.006 0.005
+A586 2.28 0.16 0.16 0.226 0.099 0.004 0.004
+A611 3.02 0.64 0.67 0.279 0.092 0.014 0.009
+A665 2.23 0.5 0.31 0.222 0.1 0.006 0.008
+A68 2.96 0.75 0.71 0.309 0.105 0.016 0.012
+A697 3.61 0.9 0.82 0.458 0.127 0.015 0.013
+A773 2.27 0.38 0.3 0.271 0.119 0.009 0.009
+A781 0.57 0.57 0.38 0.071 0.126 0.02 0.016
+A963 2.43 0.41 0.42 0.266 0.11 0.012 0.009

@@ -1,0 +1,63 @@
+meta:
+  kind: observation
+  extracted: false
+  status: needs_check
+  contributors:
+  - "G. Aric\xF2"
+  - M. Douspis
+  added: '2026-11-06'
+  caveats:
+  - "LEGACY BUG FIXED: published fit has no pivot (M in Msun); legacy band combined (A\xB1dA)(M)^(B\xB1\
+    dB) at M=1 Msun, inflating the band by ~2x at 1e15. Here the fractional normalisation error is ASSUMED\
+    \ to apply at the 1e14 pivot -> ask authors for the covariance"
+  - mass range approximate; redshift range to verify
+  changelog:
+  - cosmology and relations checked against arXiv:2411.16555v2 2026-10-31
+  id: Popesso2024
+  reference: Popesso, P., Biviano, A., Marini, I., et al., A&A, doi:10.1051/0004-6361/202453256 (arXiv:2411.16555,
+    2024)
+  bibcode: null
+  doi: 10.1051/0004-6361/202453256
+  arxiv: '2411.16555'
+  url: https://arxiv.org/abs/2411.16555
+  description: 'eROSITA (eFEDS) stacking of optically selected GAMA groups + eFEDS and CHEX-MATE clusters:
+    f_gas = A (M/Msun)^B, re-expressed at a 1e14 Msun pivot.'
+  data_type: relation
+  quantities:
+  - f_gas
+  aperture:
+    delta: 500c
+    region: sphere
+    r_inner: null
+    r_outer: 1.0
+  mass:
+    column: M_500c
+    definition: 500c
+    proxy: mixed
+    proxy_details: GAMA group luminosity (groups), LX-M (eFEDS), CHEX-MATE HSE; NFW c-M (Dutton & Maccio
+      14)
+    unit: Msun
+    distance_exponent: 1.0
+  cosmology:
+    H0: 67.74
+    Om0: 0.3089
+    Ode0: 0.6911
+  redshift:
+    min: 0.0
+    max: 0.2
+    effective: 0.1
+  table_source: Eqs. 4-5
+components:
+- quantity: f_gas
+  label: r500c
+  norm: 0.06431390251972334
+  norm_err_lo: 0.005191256705627893
+  norm_err_hi: 0.005191256705627893
+  slope: 0.39
+  slope_err_lo: 0.02
+  slope_err_hi: 0.02
+  pivot_mass: 100000000000000.0
+  mass_range:
+  - 1000000000000.0
+  - 1000000000000000.0
+  corr: 0.0

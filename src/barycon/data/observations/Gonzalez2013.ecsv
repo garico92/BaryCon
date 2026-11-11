@@ -1,0 +1,58 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: R_500c_Mpc, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# - {name: f_star, datatype: float64}
+# - {name: f_star_lo, datatype: float64}
+# - {name: f_star_hi, datatype: float64}
+# - {name: f_b, datatype: float64}
+# - {name: f_b_lo, datatype: float64}
+# - {name: f_b_hi, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: needs_check}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: ['IMF not recorded yet: add before IMF homogenisation', stellar mass includes ICL (unlike most other entries)]
+# - changelog: []
+# - {id: Gonzalez2013}
+# - {reference: 'Gonzalez, A. H., Sivanandam, S., Zabludoff, A. I., Zaritsky, D. 2013, ApJ, 778, 14'}
+# - {bibcode: 2013ApJ...778...14G}
+# - {doi: 10.1088/0004-637X/778/1/14}
+# - {arxiv: '1309.3565'}
+# - {url: 'https://arxiv.org/abs/1309.3565'}
+# - {description: 12 clusters/groups at z~0.1 with XMM gas masses and stellar masses including BCG+ICL. Values from the Planck-cosmology
+#     tables (the paper also gives WMAP7 tables).}
+# - {data_type: points}
+# - quantities: [f_gas, f_star, f_b]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: xray_scaling_relation, proxy_details: M500 from the X-ray
+#       temperature in (0.15-0.5) R500 via the Vikhlinin+09 M-T relation (as described by Kravtsov+18), unit: Msun}
+# - cosmology: {H0: 67.15, Ode0: 0.6825, Om0: 0.3175, note: Planck 2013; VERIFY exact values used in Tables 6-7 (legacy h=0.6715)}
+# - stellar: {imf: null, includes_bcg: true, includes_icl: true}
+# - redshift: {effective: null, max: 0.1223, min: 0.0571}
+# - {table_source: 'Tables 6 and 7 (Planck cosmology); redshifts from Simbad/Sanderson+13 (Douspis, Oct 2026)'}
+# - overlaps_with: [Sanderson2013]
+# schema: astropy-2.0
+name z M_500c M_500c_lo M_500c_hi R_500c_Mpc f_gas f_gas_lo f_gas_hi f_star f_star_lo f_star_hi f_b f_b_lo f_b_hi
+Abell0122 0.113 2.35 0.2 0.2 0.93 0.094 0.013 0.013 0.026 0.003 0.003 0.12 0.013 0.013
+Abell1651 0.0848 5.37 0.43 0.43 1.23 0.139 0.013 0.013 0.012 0.001 0.001 0.151 0.013 0.013
+Abell2401 0.0571 0.99 0.11 0.11 0.71 0.095 0.014 0.014 0.026 0.003 0.003 0.121 0.014 0.014
+Abell2721 0.1145 3.6 0.33 0.33 1.07 0.134 0.021 0.021 0.016 0.002 0.002 0.15 0.021 0.021
+Abell2811 0.1075 3.73 0.29 0.29 1.08 0.132 0.011 0.011 0.013 0.002 0.002 0.145 0.012 0.012
+Abell2955 0.0943 1.03 0.12 0.12 0.71 0.071 0.01 0.01 0.031 0.004 0.004 0.103 0.011 0.011
+Abell2984 0.104 0.99 0.1 0.1 0.7 0.117 0.015 0.015 0.041 0.005 0.005 0.159 0.016 0.016
+Abell3112 0.0749 3.37 0.2 0.2 1.06 0.142 0.01 0.01 0.022 0.002 0.002 0.163 0.01 0.01
+Abell3693 0.1223 2.36 0.24 0.24 0.93 0.117 0.014 0.014 0.024 0.003 0.003 0.141 0.014 0.014
+Abell4010 0.096 2.51 0.19 0.19 0.95 0.127 0.011 0.011 0.023 0.003 0.003 0.15 0.012 0.012
+AbellS0084 0.1088 2.47 0.25 0.25 0.94 0.094 0.012 0.012 0.024 0.003 0.003 0.118 0.011 0.011
+AbellS0296 0.0696 1.51 0.21 0.21 0.81 0.081 0.013 0.013 0.02 0.003 0.003 0.101 0.014 0.014

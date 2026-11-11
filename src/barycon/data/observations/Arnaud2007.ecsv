@@ -1,0 +1,49 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_gas_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: unverified}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: []
+# - changelog: [migrated from legacy Arnaud_2007.dat (was labelled 'Arnaud 2017' in legacy plots)]
+# - {id: Arnaud2007}
+# - {reference: 'Arnaud, M., Pointecouteau, E., Pratt, G. W. 2007, A&A, 474, L37'}
+# - {bibcode: 2007A&A...474L..37A}
+# - {doi: '10.1051/0004-6361:20078541'}
+# - {arxiv: '0709.1561'}
+# - {url: 'https://www.aanda.org/articles/aa/pdf/2007/42/aa8541-07.pdf'}
+# - {description: 10 nearby relaxed clusters observed with XMM-Newton; hydrostatic M500 from NFW fits to the mass profiles (calibration
+#     of the M500-YX relation).}
+# - {data_type: points}
+# - quantities: [f_gas]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: hydrostatic, proxy_details: 'XMM-Newton, NFW fit to HSE mass
+#       profile', unit: Msun}
+# - cosmology: {H0: 70.0, Ode0: 0.7, Om0: 0.3}
+# - redshift: {effective: null, max: 0.16, min: 0.03}
+# - {selection: 'relaxed, morphologically regular clusters'}
+# - {table_source: Table 1}
+# schema: astropy-2.0
+name z M_500c M_500c_hi M_500c_lo M_gas_500c f_gas f_gas_hi f_gas_lo
+1983 0.0442 1.09 0.45 0.29 0.064 0.058 0.026 0.017
+9 0.0382 0.88 0.23 0.18 0.049 0.055 0.016 0.012
+2717 0.0498 1.1 0.13 0.11 0.102 0.093 0.012 0.011
+1991 0.0586 1.2 0.13 0.12 0.125 0.104 0.012 0.011
+2597 0.0852 2.22 0.23 0.21 0.251 0.113 0.012 0.011
+1068 0.1375 3.87 0.29 0.27 0.377 0.097 0.008 0.007
+1413 0.143 4.82 0.44 0.4 0.755 0.157 0.016 0.014
+478 0.0881 7.57 1.2 1.02 0.933 0.123 0.02 0.017
+0745191 0.1028 7.27 0.8 0.7 1.071 0.147 0.018 0.016
+2204 0.1523 8.39 0.86 0.77 1.055 0.126 0.014 0.012

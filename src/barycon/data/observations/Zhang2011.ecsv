@@ -1,0 +1,59 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: z, datatype: float64}
+# - {name: M_500c, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_lo, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_hi, unit: 1e+14 solMass, datatype: float64}
+# - {name: M_500c_from_Mgas, unit: 1e+14 solMass, datatype: float64}
+# - {name: f_gas, datatype: float64}
+# - {name: f_gas_lo, datatype: float64}
+# - {name: f_gas_hi, datatype: float64}
+# - {name: f_star, datatype: float64}
+# - {name: f_star_lo, datatype: float64}
+# - {name: f_star_hi, datatype: float64}
+# meta: !!omap
+# - {kind: observation}
+# - {extracted: false}
+# - {status: unverified}
+# - contributors: ["G. Aric\xF2", M. Douspis]
+# - {added: '2026-11-06'}
+# - caveats: ['LEGACY BUG FIXED: f_star was rescaled as h^-3/2 (gas scaling); stellar fractions scale as h^-1', IMF to be recorded]
+# - changelog: []
+# - {id: Zhang2011}
+# - {reference: "Zhang, Y.-Y., Lagan\xE1, T. F., Pierini, D., et al. 2011, A&A, 535, A78"}
+# - {bibcode: 2011A&A...535A..78Z}
+# - {doi: 10.1051/0004-6361/201116803}
+# - {arxiv: '1109.0390'}
+# - {url: 'https://arxiv.org/abs/1109.0390'}
+# - {description: 19 HIFLUGCS clusters with XMM-Newton hydrostatic masses and SDSS stellar masses.}
+# - {data_type: points}
+# - quantities: [f_gas, f_star]
+# - aperture: {delta: 500c, r_inner: null, r_outer: 1.0, region: sphere}
+# - mass: {column: M_500c, definition: 500c, distance_exponent: 1.0, proxy: hydrostatic, proxy_details: XMM-Newton HSE, unit: Msun}
+# - cosmology: {H0: 70.0, Ode0: 0.7, Om0: 0.3}
+# - stellar: {imf: null, includes_bcg: true, includes_icl: false}
+# - redshift: {effective: null, max: 0.0899, min: 0.02}
+# - {table_source: Tables 1-2}
+# schema: astropy-2.0
+name z M_500c M_500c_lo M_500c_hi M_500c_from_Mgas f_gas f_gas_lo f_gas_hi f_star f_star_lo f_star_hi
+A0085 0.0556 6.37 1.0 1.0 5.68 0.128 0.01 0.01 0.0115 0.0012 0.0012
+A0400 0.024 1.83 0.39 0.39 1.07 0.075 0.008 0.008 0.024 0.0039 0.0039
+IIIZw54 0.0311 1.91 0.58 0.58 1.18 0.076 0.013 0.013 0.0239 0.0039 0.0039
+A1367 0.0216 1.76 0.27 0.27 2.11 0.118 0.009 0.009 0.0247 0.0028 0.0028
+MKW4 0.02 0.5 0.14 0.14 0.58 0.094 0.013 0.013 0.0233 0.004 0.004
+ZwCl1215 0.075 4.93 0.98 0.98 4.34 0.124 0.013 0.013 0.0143 0.0017 0.0017
+A1650 0.0845 3.44 0.66 0.66 4.28 0.148 0.018 0.018 0.0217 0.0026 0.0026
+Coma 0.0232 6.55 0.79 0.79 6.21 0.129 0.009 0.009 0.0201 0.0018 0.0018
+A1795 0.0616 3.41 0.63 0.63 4.46 0.15 0.014 0.014 0.0182 0.0022 0.0022
+MKW8 0.027 0.62 0.12 0.12 1.1 0.128 0.016 0.016 0.0259 0.0031 0.0031
+A2029 0.0767 14.7 2.61 2.61 6.82 0.091 0.008 0.008 0.0065 0.0007 0.0007
+A2052 0.0348 1.39 0.28 0.28 2.03 0.134 0.014 0.014 0.0254 0.003 0.003
+MKW3S 0.045 1.45 0.34 0.34 2.29 0.147 0.017 0.017 0.0268 0.0035 0.0035
+A2065 0.0721 11.18 1.78 1.78 3.35 0.069 0.008 0.008 0.0065 0.0006 0.0006
+A2142 0.0899 7.36 1.25 1.25 10.26 0.187 0.017 0.017 0.0114 0.0011 0.0011
+A2147 0.0351 4.44 0.67 0.67 3.63 0.114 0.01 0.01 0.0154 0.0015 0.0015
+A2199 0.0302 2.69 0.42 0.42 2.64 0.11 0.01 0.01 0.0177 0.0017 0.0017
+A2255 0.08 7.13 1.38 1.38 4.08 0.1 0.01 0.01 0.0095 0.0011 0.0011
+A2589 0.0416 3.03 0.75 0.75 1.88 0.084 0.011 0.011 0.0169 0.0023 0.0023
