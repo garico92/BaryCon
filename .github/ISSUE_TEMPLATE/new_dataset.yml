@@ -1,0 +1,62 @@
+name: "New dataset"
+description: "Propose a published (or accepted) baryon-fraction measurement — no code needed"
+title: "[dataset] FirstAuthorYEAR: short description"
+labels: ["new-dataset"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Fill in what you know; a maintainer will build the entry and ask you to review it.
+        **Values must be as published** — please do not rescale them.
+  - type: input
+    id: reference
+    attributes: {label: "Reference (authors, year, journal) and arXiv/DOI", placeholder: "Eckert et al. 2019, A&A 621, A40, arXiv:1805.00034"}
+    validations: {required: true}
+  - type: dropdown
+    id: quantities
+    attributes:
+      label: Quantities
+      multiple: true
+      options: ["f_gas", "f_star", "f_bcg", "f_icl", "f_b (total baryons)", "other (explain below)"]
+    validations: {required: true}
+  - type: dropdown
+    id: data_type
+    attributes: {label: "Type of data", options: ["individual objects", "binned / stacked", "fitted relation (A, slope, pivot)"]}
+    validations: {required: true}
+  - type: input
+    id: aperture
+    attributes: {label: "Aperture / overdensity", placeholder: "within r500c; or shell 0.8–1.2 r2500c; or r200m"}
+    validations: {required: true}
+  - type: dropdown
+    id: proxy
+    attributes:
+      label: "How was the total mass obtained?"
+      options: ["X-ray hydrostatic", "weak lensing", "X-ray scaling relation", "SZ scaling relation", "optical richness/luminosity", "dynamics", "other"]
+    validations: {required: true}
+  - type: input
+    id: cosmology
+    attributes: {label: "Cosmology assumed in the paper", placeholder: "H0=70, Om=0.3, flat ΛCDM"}
+    validations: {required: true}
+  - type: input
+    id: imf
+    attributes: {label: "Stellar IMF and whether ICL is included (stellar data only)", placeholder: "Chabrier; BCG+ICL included"}
+  - type: input
+    id: redshift
+    attributes: {label: "Redshift range", placeholder: "0.05–0.3"}
+  - type: textarea
+    id: data
+    attributes:
+      label: "Data"
+      description: "Paste the table (any format) or give a link (VizieR, journal table, GitHub). State units and error convention (1σ? bounds?)."
+      render: text
+    validations: {required: true}
+  - type: textarea
+    id: caveats
+    attributes: {label: "Caveats / anything a careful user must know"}
+  - type: checkboxes
+    id: author
+    attributes:
+      label: Provenance
+      options:
+        - label: "I am an author of this measurement (the entry can be marked verified after your review)"
+        - label: "Numbers were read off a figure (not tabulated)"

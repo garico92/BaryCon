@@ -1,0 +1,28 @@
+name: CI
+on:
+  push: {branches: [main]}
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: {python-version: ["3.9", "3.11", "3.13"]}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "${{ matrix.python-version }}"}
+      - run: pip install -e ".[test]"
+      - name: Validate every data file against the schema
+        run: barycon validate src/barycon/data/observations/* templates/*
+      - run: pytest -q --cov=barycon
+  figures:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e .
+      - run: python examples/make_figures.py
+      - uses: actions/upload-artifact@v4
+        with: {name: figures, path: docs/figures}
