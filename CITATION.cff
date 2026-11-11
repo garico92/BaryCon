@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use BaryCon, please cite the software/data release below AND the original papers of the measurements you use (barycon.load().bibtex())."
+title: "BaryCon: an open, community-maintained collection of baryon-fraction constraints in galaxy groups and clusters"
+type: software
+authors:
+  - family-names: "Aricò"
+    given-names: "Giovanni"
+    orcid: "https://orcid.org/0000-0002-2802-2928"
+    affiliation: "INFN, Sezione di Bologna"
+  - family-names: "Douspis"
+    given-names: "Marian"
+    orcid: "https://orcid.org/0000-0003-4203-3954"
+    affiliation: "Université Paris-Saclay, CNRS, Institut d'Astrophysique Spatiale"
+version: "0.1.0.dev0"
+license: MIT
+repository-code: "https://github.com/garico92/barycon"
+keywords: [cosmology, galaxy clusters, gas fraction, stellar fraction, baryonic feedback]

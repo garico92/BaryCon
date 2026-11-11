@@ -1,82 +1,137 @@
+# BaryCon — Baryon Constraints in galaxy groups and clusters
 
----
+*An open, community-maintained collection of gas, stellar and baryon fractions in galaxy
+groups and clusters, with explicit and traceable homogenisation, plotting and fitting.*
 
-# Halo Gas and Stellar Fraction Datasets
+G. Aricò & M. Douspis and contributors.
 
-This repository contains a collection of halo gas fractions, and in some cases, stellar fractions, compiled from the literature. These datasets are primarily derived from X-ray or SZ observations, with total halo masses estimated under the assumption of thermal equilibrium or calibrated with weak lensing measurements.
+![gas fractions](docs/figures/gas_fractions_500c.png)
 
-> **Disclaimer:** The tables and data are provided *as-is*, without any warranty. The idea is to have a fast tool to compare different observations. Users are responsible for verifying and interpreting the data appropriately. If you use any of these datasets in your research, please cite the original publication.
+Baryon fractions of groups and clusters are the main external data used to calibrate
+baryonic feedback in hydrodynamical simulations, emulators and weak-lensing analyses.
+Published measurements use different cosmologies, overdensities (r2500c, r500c, r200c,
+shells), total-mass estimators (hydrostatic, lensing, scaling relations, dynamics) and
+stellar IMFs. BaryCon stores each measurement **as published**, together with every
+assumption needed to interpret it, and lets you homogenise, plot and fit them **explicitly**.
 
----
+## Install
 
-## Summary of Datasets
+```bash
+pip install git+https://github.com/garico92/barycon   # until the PyPI release
+pip install -e ".[dev]"                                               # from a clone
+```
 
-| Paper                 | Type          | Dataset specifics                                                                | Redshift Range | Halo Mass Range | Reference                                                                                                                 |
-| --------------------- | ------------- | -------------------------------------------------------------------------------- | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Popesso et al. 2024   | Gas           | X-ray (eROSITA + CHEXMATE)                                                       | 0.0–0.5        | 10¹²–10¹⁵ M☉    | [arXiv:2411.16555](https://arxiv.org/pdf/2411.16555)                                                                      |
-| Bulbul et al. 2024    | Gas           | X-ray (eROSITA)                                                                  | 0.0–1.3        | 10¹²–10¹⁵ M☉    | [arXiv:2402.08452](https://arxiv.org/pdf/2402.08452)                                                                      |
-| Grandis et al. 2024   | Gas + Stellar | Optical + X-ray + SZ (compilation)                                               | 0.0–1.0        | 10¹³–10¹⁵ M☉    | [arXiv:2309.02920](https://arxiv.org/pdf/2309.02920)                                                                      |
-| Wicker et al. 2023    | Gas           | SZ-selected (Planck) + X-ray (XMM-Newton)                                        | 0.0–0.5        | 10¹⁴–10¹⁵ M☉    | [arXiv:2204.12823](https://arxiv.org/pdf/2204.12823)                                                                      |
-| Akino et al. 2022     | Gas + Stellar | X-ray (XXL/XMM-Newton) + Weak lensing (HSC) + Optical (SDSS photo)               | 0.0–1.0        | 10¹³–10¹⁵ M☉    | [arXiv:2111.10080](https://arxiv.org/pdf/2111.10080)                                                                      |
-| Mantz et al. 2022     | Gas           | X-ray (Chandra) + WL (HSC/CFHT)                                                  | 0.0–1.2        | 10¹⁴–10¹⁵ M☉    | [arXiv:2111.09343](https://arxiv.org/pdf/2111.09343)                                                                      |
-| Mulroy et al. 2019    | Gas           | X-ray (ROSAT/Chandra/XMM-Newton) + Weak lensing (HSC) + SZ (SZA/Planck) + NIR    | 0.1–0.3        | 10¹⁴–10¹⁵ M☉    | [arXiv:1901.11276](https://arxiv.org/pdf/1901.11276)                                                                      |
-| Chiu et al. 2018      | Gas + Stellar | SZ-selected (SPT) + X-ray (Chandra) + Optical (DES) + NIR (WISE/Spitzer)         | 0.2–1.3        | 10¹⁴–10¹⁵ M☉    | [MNRAS](https://academic.oup.com/mnras/article/478/3/3072/4996803) / [arXiv:1711.00917](https://arxiv.org/pdf/1711.00917) |
-| Kravtsov et al. 2018  | Stellar       | Optical (SDSS) + X-ray (Chandra + XMM-Newton)                                    | 0.0–1.0        | 10¹²–10¹⁵ M☉    | [arXiv:1401.7329](https://arxiv.org/pdf/1401.7329.pdf)                                                                    |
-| Gonzalez et al. 2013  | Gas + Stellar | Optical + X-ray (XMM-Newton)                                                     | 0.0–0.3        | 10¹³–10¹⁵ M☉    | [arXiv:1309.3565](https://arxiv.org/pdf/1309.3565.pdf)                                                                    |
-| Landry et al. 2013    | Gas           | X-ray (Chandra)                                                                  | 0.2–1.0        | 10¹³–10¹⁵ M☉    | [arXiv:1211.4626](https://arxiv.org/pdf/1211.4626.pdf)                                                                    |
-| Sanderson et al. 2013 | Gas           | Optical + X-ray (XMM-Newton)                                                     | 0.0–0.2        | 10¹³–10¹⁵ M☉    | [arXiv:1212.1613](https://arxiv.org/pdf/1212.1613.pdf)                                                                    |
-| Reyes et al. 2012     | Stellar       | Optical + Weak lensing (SDSS)                                                    | 0.0–0.3        | 10¹³–10¹⁵ M☉    | [arXiv:1110.4107](https://arxiv.org/pdf/1110.4107.pdf)                                                                    |
-| Ettori et al. 2011    | Gas           | X-ray (XMM-Newton)                                                               | 0.1–0.3        | 10¹⁴–10¹⁵ M☉    | [arXiv:1009.3266](https://arxiv.org/pdf/1009.3266.pdf)                                                                    |
-| Zhang et al. 2011     | Gas + Stellar | X-ray (XMM-Newton/Rosat) + Optical (SDSS photo)                                  | 0.0–0.1        | 10¹⁴–10¹⁵ M☉    | [arXiv:1109.0390](https://arxiv.org/pdf/1109.0390)                                                                        |
-| Giodini et al. 2009   | Gas + Stellar | X-ray (XMM-Newton + Chandra) + Optical (COSMOS photo)                            | 0.1–1.0        | 10¹³–10¹⁵ M☉    | [arXiv:0904.0448](https://arxiv.org/pdf/0904.0448.pdf)                                                                    |
-| Sun et al. 2008       | Gas           | X-ray (Chandra)                                                                  | 0.0–0.1        | 10¹³–10¹⁴ M☉    | [arXiv:0805.2320](https://arxiv.org/pdf/0805.2320.pdf)                                                                    |
-| Arnaud et al. 2007    | Gas           | X-ray (XMM-Newton)                                                               | 0.0–0.5        | 10¹³–10¹⁵ M☉    | [A&A](https://www.aanda.org/articles/aa/pdf/2007/42/aa8541-07.pdf)                                                        |
-| Vikhlinin et al. 2006 | Gas           | X-ray (Chandra)                                                                  | 0.0–0.3        | 10¹³–10¹⁵ M☉    | [Journal](https://iopscience.iop.org/article/10.1086/500288/pdf) / [arXiv](https://arxiv.org/pdf/astro-ph/0507092.pdf)    |
+## Quick start: dictionary interface (`BaryonFractions`)
 
+Everything is already converted to the target
+cosmology (Planck18 by default) and masses are in M☉/h.
 
+```python
+from barycon import BaryonFractions          # `from baryon_fractions import ...` still works
+import matplotlib.pyplot as plt
 
-> Note: the redshift and halo mass ranges are approximate, based on the values reported in the papers and automatically compiled by AI.
+bf = BaryonFractions()                        # or BaryonFractions(hubble=0.7)
+fig, ax = bf.plot_gas_fractions_M()           # f_gas vs M500
+fig, ax = bf.plot_gas_fractions_z()           # f_gas vs redshift
+fig, ax = bf.plot_stellar_fractions()
 
----
+d = bf.gas_data["wicker_2022"]                # M500, M500_p/m/err, f_gas, f_gas_p/m/err, redshift, reference
+akino = bf.gas_fits["akino_2022"]             # M500, f_gas, f_gas_m, f_gas_p (band)
 
-## Usage
+popt, pcov = bf.fit(["wicker_2022", "arnaud_2007"], fit_type="gas_frac_M_double", scatter=True)
+bf.plot_best_fit(data=["wicker_2022", "arnaud_2007"])
+```
 
-This rep
-Each dataset is provided in ASCII files in the repository. Typical columns include:
+## Quick start: metadata interface (`barycon.load`)
 
-* Halo mass estimates
-* Gas fractions
-* Stellar fractions
-* Associated uncertainties
+```python
+import barycon as bc
 
-An example of how to load and plot the datasets is provided in **`plot_gas_fractions.py`**, **`plot_stellar_fractions.py`**, **`baryon_fractions.ipynb`**.
+col = bc.load()                                    # every entry
+col.summary().pprint(max_lines=-1)                 # cosmology, aperture, mass proxy, z, IMF, status
 
-> **Warning:** The plotting routines focus on mass fractions as a function of the halo mass, but they do not take into account the different redshift of the observations. Both halo masses and baryonic fractions are not directly observable, and in their derivations by the different groups and datasets there are probably different biases and assumptions on astrophysics and cosmology not taken into account here.  
+gas = col.filter(quantity="f_gas", delta="500c", region="sphere")
+gas = gas.homogenize(cosmology="Planck18")         # explicit and logged
+print(gas["Vikhlinin2006"].history)
+ax = gas.plot("f_gas", universal=0.157)            # x="z" for redshift
+ax = gas.plot("f_gas", x="z")
 
-## Gas fractions 
+# overdensity changes are model dependent: you must say what you assume
+g200 = gas.filter(data_type="points").to_delta("200c", eta_gas=0.3)
 
-![gas fractions](plots/gas_fractions.png)
+# hydrostatic-bias correction, IMF
+hse = gas.filter(mass_proxy="hydrostatic")
+hse_b = bc.Collection(e.apply_hse_bias(0.2) for e in hse)
+stars = col.filter(quantity="f_star").to_imf("chabrier")
 
-## Stellar fractions 
+# fitting (power_law | saturating | double_power_law_z), optionally with intrinsic scatter
+res = hse.fit("saturating", scatter=True)
+print(res.summary()); res.plot()
 
-![stellar fractions](plots/stellar_fractions.png)
----
+tab = gas.to_table("f_gas", h_units=True)         # one long table for your own fits
+print(col.bibtex())                                # cite what you use
+```
 
-## Citation
+Command line: `barycon list --quantity f_star`, `barycon info Kravtsov2018`,
+`barycon validate my_entry.ecsv`.
 
-Please cite the original papers corresponding to the dataset(s) you use.
+## Contents (data release 2026.11.0)
 
----
+20 publications, 25 entries, ~11,000 systems, 10¹¹–10¹⁵·⁵ M☉, 0 < z < 1.3.
+`(?)` in plots = `status: needs_check` (an open question is documented in the entry).
+Per-entry assumptions: [`docs/homologation.md`](docs/homologation.md).
 
-## License / Terms of Use
+| id | quantities | aperture | total mass | z | N | reference |
+|---|---|---|---|---|---|---|
+| Khalil2026, Khalil2026_200c | f_gas | r500c, r200c | dynamical? | 0.01–0.03 | 24/22 | [arXiv:2608.17735](https://arxiv.org/abs/2608.17735) |
+| Popesso2024, Popesso2024_200c | f_gas (fit) | r500c, r200c | mixed | ≲0.2 | fit | [doi:10.1051/0004-6361/202453256](https://doi.org/10.1051/0004-6361/202453256) |
+| Bulbul2024 | f_gas | r500c | X-ray SR (WL-cal.) | 0–1.3 | 10440 | [doi:10.1051/0004-6361/202348264](https://doi.org/10.1051/0004-6361/202348264) |
+| Grandis2024 | f_gas, f★ (fits at their pivot, with local slope) | r500c | compilation | 0–1.3 | 4 surveys | [doi:10.1093/mnras/stae259](https://doi.org/10.1093/mnras/stae259) |
+| Wicker2023 | f_gas | r500c | HSE | 0.06–0.55 | 120 | [doi:10.1051/0004-6361/202243922](https://doi.org/10.1051/0004-6361/202243922) |
+| Akino2022 | f_gas, f★, f_BCG (fits) | r500c | WL | 0–1 | fit | [doi:10.1093/pasj/psab115](https://doi.org/10.1093/pasj/psab115) |
+| Mantz2022 | f_gas | shell 0.8–1.2 r2500c | HSE | 0–1.2 | 44 | [arXiv:2111.09343](https://arxiv.org/abs/2111.09343) |
+| Mulroy2019 | f_gas | r500c | WL | 0.15–0.31 | 41 | [doi:10.1093/mnras/sty3484](https://doi.org/10.1093/mnras/sty3484) |
+| Chiu2018 | f_gas, f★ | r500c | SZ SR | 0.28–1.29 | 91 | [doi:10.1093/mnras/sty1284](https://doi.org/10.1093/mnras/sty1284) |
+| Kravtsov2018 | f★, f_BCG | r500c | X-ray Y_X | 0.02–0.09 | 9 | [doi:10.1134/S1063773717120015](https://doi.org/10.1134/S1063773717120015) |
+| Gonzalez2013 | f_gas, f★, f_b | r500c | X-ray T_X | 0.06–0.12 | 12 | [doi:10.1088/0004-637X/778/1/14](https://doi.org/10.1088/0004-637X/778/1/14) |
+| Sanderson2013 (+_2500c) | f_gas | r500c, r2500c | HSE | 0.06–0.11 | 5 | [doi:10.1093/mnras/sts586](https://doi.org/10.1093/mnras/sts586) |
+| Landry2013 (+_2500c) | f_gas | r500c, r2500c | HSE | 0.15–0.3 | 25 | [arXiv:1211.4626](https://arxiv.org/abs/1211.4626) |
+| Reyes2012 | f★ | r200c | WL (galaxies) | ~0.1 | 21 | [doi:10.1111/j.1365-2966.2012.21472.x](https://doi.org/10.1111/j.1365-2966.2012.21472.x) |
+| Zhang2011 | f_gas, f★ | r500c | HSE | 0.02–0.09 | 19 | [doi:10.1051/0004-6361/201116803](https://doi.org/10.1051/0004-6361/201116803) |
+| Ettori2010 | f_gas | r500c | HSE | 0.09–0.31 | 44 | [doi:10.1051/0004-6361/201015271](https://doi.org/10.1051/0004-6361/201015271) |
+| Sun2009 | f_gas | r500c | HSE | 0.01–0.12 | 23 | [doi:10.1088/0004-637X/693/2/1142](https://doi.org/10.1088/0004-637X/693/2/1142) |
+| Giodini2009 | f★ (f_gas derived) | r500c | X-ray SR (WL-cal.) | 0–1 | 5 bins | [doi:10.1088/0004-637X/703/1/982](https://doi.org/10.1088/0004-637X/703/1/982) |
+| Arnaud2007 | f_gas | r500c | HSE | 0.03–0.16 | 10 | [doi:10.1051/0004-6361:20078541](https://doi.org/10.1051/0004-6361:20078541) |
+| Vikhlinin2006 (+_2500c) | f_gas | r500c, r2500c | HSE | 0.02–0.23 | 10 | [doi:10.1086/500288](https://doi.org/10.1086/500288) |
 
-* The datasets in this repository are provided **as-is**, for research and educational purposes only.
-* No warranty is given regarding accuracy, completeness, or suitability for any purpose.
-* Users are responsible for verifying and interpreting the data reported.
-* When using any of these datasets, please cite the original publication(s).
-* Redistribution is allowed, provided this notice and citations are included.
+HSE = hydrostatic equilibrium (not corrected for a mass bias unless you call
+`apply_hse_bias`); SR = scaling relation.
 
----
+## Repository layout
 
+| Path | Content |
+|---|---|
+| `src/barycon/` | the package; curated entries with metadata in `src/barycon/data/observations/` |
+| `data/` | raw text tables as transcribed from the papers; `tools/migrate_from_text.py data src/barycon/data` rebuilds the entries from them |
+| `tools/`, `templates/` | migration and BibTeX tools; templates for new entries |
+| `docs/`, `examples/`, `paper/` | homologation notes and figures, example scripts, JOSS paper |
+| `legacy/` | the original plotting scripts and notebook, frozen |
 
+## Contribute your measurement
 
+1. **No code**: open a *New dataset* issue and fill in the form (table, cosmology, aperture, mass method).
+2. **Merge request / pull request**: copy `templates/points_template.ecsv` or `templates/relation_template.yaml`, run `barycon validate`, open the request.
+3. **E-mail** the maintainers.
+
+Details: [CONTRIBUTING.md](CONTRIBUTING.md). Authors who check their own entry get
+`status: verified`.
+
+## Citing
+
+Cite the release you used, **and the original papers**
+(`col.bibtex()`).
+
+## Licence
+
+Code: MIT. Compiled data and metadata: CC-BY-4.0; the measurements belong to their authors.
+Inspired by [CoReCon](https://github.com/EGaraldi/corecon) (Garaldi 2023, JOSS 8, 5407).
